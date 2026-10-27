@@ -68,14 +68,13 @@ export const TerminalCommandLine: React.FC<TerminalCommandLineProps> = ({
         newLogs.push({
           type: 'output',
           text: `AVAILABLE TERMINAL COMMANDS:
-  find <query>        - Search video index (e.g. 'find tunnel')
-  tag <category>      - Filter by tag [MOTORCYCLE, TUNNEL, SHIBUYA, TOKYO_DRIFT, ALL]
+  find <query>        - Search video index (e.g. 'find c1')
+  tag <category>      - Filter by tribe [SHUTOKO_C1, DAIKOKU_PA, TOUGE_RUN, BOSOZOKU, CUSTOM_TURBO, ANIME_SPEED, CIRCUIT, ALL]
   play <id>           - Immediately play video (e.g. 'play VID-001')
   sort <key>          - Sort matrix by 'views', 'newest', 'duration'
   bg <scene>          - Switch rider ambient [tunnel, city, expressway]
   mode <canvas|video> - Set rider background renderer
-  opacity <0-30>      - Adjust faint grey rider opacity (e.g. 'opacity 12')
-  sound <on|off>      - Toggle motorcycle engine ASMR rumble
+  sound <on|off>      - Toggle motorcycle exhaust ASMR rumble
   list                - Display all current video nodes
   logo                - Render Kurogane ASCII badge
   clear               - Clear terminal output
@@ -87,7 +86,7 @@ export const TerminalCommandLine: React.FC<TerminalCommandLineProps> = ({
       case 'search':
       case 'grep':
         if (!args) {
-          newLogs.push({ type: 'error', text: "Usage: find <keyword> (e.g. 'find motorcycle')" });
+          newLogs.push({ type: 'error', text: "Usage: find <keyword> (e.g. 'find c1')" });
         } else {
           onSearch(args);
           newLogs.push({
@@ -104,7 +103,7 @@ export const TerminalCommandLine: React.FC<TerminalCommandLineProps> = ({
         if (!catUpper) {
           newLogs.push({
             type: 'error',
-            text: 'Usage: tag <MOTORCYCLE|TUNNEL|SHIBUYA|TOKYO_DRIFT|LOFI_BEATS|ALL>',
+            text: 'Usage: tag <SHUTOKO_C1|DAIKOKU_PA|TOUGE_RUN|BOSOZOKU|CUSTOM_TURBO|ANIME_SPEED|CIRCUIT|ALL>',
           });
         } else {
           onFilterCategory(catUpper);

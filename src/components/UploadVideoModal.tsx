@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { VideoItem } from '../types';
 import { CATEGORIES } from '../data/mockVideos';
-import { PlusCircle, Upload, X, Check, Video as VideoIcon } from 'lucide-react';
+import { PlusCircle, Upload, X, Check, Flame } from 'lucide-react';
 
 interface UploadVideoModalProps {
   isOpen: boolean;
@@ -18,9 +18,9 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
   const [titleJp, setTitleJp] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
   const [thumbnailUrl, setThumbnailUrl] = useState('');
-  const [category, setCategory] = useState('MOTORCYCLE');
-  const [channelName, setChannelName] = useState('MyTerminal_Rider');
-  const [duration, setDuration] = useState('04:30');
+  const [category, setCategory] = useState('SHUTOKO_C1');
+  const [channelName, setChannelName] = useState('Tokyo_Midnight_Rider');
+  const [duration, setDuration] = useState('06:20');
   const [resolution, setResolution] = useState<'4K' | '1080P' | '720P'>('4K');
   const [description, setDescription] = useState('');
 
@@ -52,7 +52,7 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
     const newVideo: VideoItem = {
       id: `VID-${Math.floor(100 + Math.random() * 900)}`,
       title: title.trim(),
-      titleJp: titleJp.trim() || `${title.trim()} [自主制作]`,
+      titleJp: titleJp.trim() || `${title.trim()} [単車疾走]`,
       duration: duration.trim() || '05:00',
       durationSec: 300,
       views: Math.floor(1000 + Math.random() * 5000),
@@ -60,10 +60,10 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
       channel: {
         name: channelName.trim() || 'Anon_Rider',
         handle: `@${channelName.toLowerCase().replace(/\s+/g, '_')}`,
-        avatar: '/assets/aistudio/Circular_manga_emblem_on_transparent_background_9f6502e1.png',
+        avatar: '/assets/aistudio/Manga_racer_with_a_raised_visor_da073607.png',
         verified: false,
       },
-      tags: [category.toLowerCase(), 'custom', 'kurogane'],
+      tags: [category.toLowerCase(), 'motorcycle', 'kurogane'],
       category: category,
       videoUrl:
         videoUrl.trim() ||
@@ -72,18 +72,18 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
         thumbnailUrl.trim() ||
         'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop',
       resolution: resolution,
-      bitrate: '38.0 Mbps',
+      bitrate: '45.0 Mbps',
       fps: 60,
-      likes: 12,
-      commentsCount: 1,
-      description: description.trim() || 'Custom video buffer submitted to Kurogane Tokyo matrix.',
+      likes: 24,
+      commentsCount: 2,
+      description: description.trim() || 'Custom Japanese motorcycle video buffer uploaded to Kurogane Tokyo matrix.',
       danmakuComments: [
         {
           id: 'dc-1',
           time: 1.0,
-          text: '新規アップロード動画キタ！',
-          user: 'watcher_jp',
-          color: '#10b981',
+          text: '新規単車動画キタ！！爆音最高',
+          user: 'c1_fan',
+          color: '#05d9e8',
         },
       ],
     };
@@ -93,17 +93,17 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 font-mono">
-      <div className="w-full max-w-xl bg-white border-2 border-black shadow-2xl flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 font-mono">
+      <div className="w-full max-w-xl bg-[#0b0d18] border-2 border-neutral-800 shadow-[0_0_30px_rgba(0,0,0,0.9)] flex flex-col max-h-[90vh] text-neutral-200">
         {/* Header */}
-        <div className="bg-neutral-900 text-white px-3.5 py-2.5 flex items-center justify-between text-xs">
+        <div className="bg-[#070912] border-b border-neutral-800 px-3.5 py-2.5 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
-            <PlusCircle className="w-4 h-4 text-emerald-400" />
-            <span className="font-bold tracking-wider">
-              SUBMIT_VIDEO // 動画アップロード
+            <PlusCircle className="w-4 h-4 text-cyan-400" />
+            <span className="font-bold tracking-wider text-white">
+              SUBMIT_MOTORCYCLE_STREAM // 単車動画投稿
             </span>
           </div>
-          <button onClick={onClose} className="p-1 hover:text-neutral-400">
+          <button onClick={onClose} className="p-1 text-neutral-400 hover:text-white">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -111,7 +111,7 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-4 overflow-y-auto space-y-3.5 text-xs">
           <div>
-            <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+            <label className="block text-[11px] font-bold text-cyan-400 mb-1">
               VIDEO_TITLE (English) *
             </label>
             <input
@@ -119,28 +119,28 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Midnight Tunnel Sprint: Tokyo C1 Loop [Onboard]"
-              className="w-full p-2 border border-neutral-300 focus:border-black focus:outline-none bg-neutral-50"
+              placeholder="e.g. Shutoko C1 Loop Midnight Attack: Yamaha R1 Onboard"
+              className="w-full p-2 border border-neutral-700 focus:border-cyan-400 focus:outline-none bg-[#0e1122] text-white"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+            <label className="block text-[11px] font-bold text-neutral-300 mb-1">
               JAPANESE_TITLE // 日本語副題 (Optional)
             </label>
             <input
               type="text"
               value={titleJp}
               onChange={(e) => setTitleJp(e.target.value)}
-              placeholder="e.g. 首都高環状線 トンネル単車疾走 [4K車載]"
-              className="w-full p-2 border border-neutral-300 focus:border-black focus:outline-none bg-neutral-50 jp-font"
+              placeholder="e.g. 首都高C1 環状線真夜中の最速アタック [4K車載]"
+              className="w-full p-2 border border-neutral-700 focus:border-cyan-400 focus:outline-none bg-[#0e1122] text-white jp-font"
             />
           </div>
 
           {/* Video file or URL */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 VIDEO_STREAM_URL (MP4)
               </label>
               <input
@@ -148,15 +148,15 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
                 value={videoUrl}
                 onChange={(e) => setVideoUrl(e.target.value)}
                 placeholder="https://.../video.mp4"
-                className="w-full p-2 border border-neutral-300 focus:border-black focus:outline-none bg-neutral-50 text-[11px]"
+                className="w-full p-2 border border-neutral-700 focus:border-cyan-400 focus:outline-none bg-[#0e1122] text-white text-[11px]"
               />
             </div>
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 OR UPLOAD LOCAL VIDEO
               </label>
-              <label className="flex items-center justify-center p-2 border border-dashed border-neutral-400 hover:border-black cursor-pointer bg-neutral-50 text-[11px] gap-2">
-                <Upload className="w-3.5 h-3.5 text-neutral-500" />
+              <label className="flex items-center justify-center p-2 border border-dashed border-neutral-600 hover:border-cyan-400 cursor-pointer bg-[#0e1122] text-[11px] gap-2 text-neutral-300">
+                <Upload className="w-3.5 h-3.5 text-cyan-400" />
                 <span className="truncate">
                   {videoUrl.startsWith('blob:') ? 'Local file selected' : 'Choose video file'}
                 </span>
@@ -173,7 +173,7 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
           {/* Thumbnail URL or Upload */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 THUMBNAIL_IMAGE_URL
               </label>
               <input
@@ -181,15 +181,15 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
                 value={thumbnailUrl}
                 onChange={(e) => setThumbnailUrl(e.target.value)}
                 placeholder="https://.../thumb.jpg"
-                className="w-full p-2 border border-neutral-300 focus:border-black focus:outline-none bg-neutral-50 text-[11px]"
+                className="w-full p-2 border border-neutral-700 focus:border-cyan-400 focus:outline-none bg-[#0e1122] text-white text-[11px]"
               />
             </div>
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 OR UPLOAD THUMBNAIL
               </label>
-              <label className="flex items-center justify-center p-2 border border-dashed border-neutral-400 hover:border-black cursor-pointer bg-neutral-50 text-[11px] gap-2">
-                <Upload className="w-3.5 h-3.5 text-neutral-500" />
+              <label className="flex items-center justify-center p-2 border border-dashed border-neutral-600 hover:border-pink-500 cursor-pointer bg-[#0e1122] text-[11px] gap-2 text-neutral-300">
+                <Upload className="w-3.5 h-3.5 text-pink-400" />
                 <span className="truncate">
                   {thumbnailUrl.startsWith('blob:') ? 'Image selected' : 'Choose poster image'}
                 </span>
@@ -206,13 +206,13 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
           {/* Category & Resolution */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
-                CATEGORY
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
+                TRIBE / CATEGORY
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full p-2 border border-neutral-300 bg-neutral-50 focus:border-black"
+                className="w-full p-2 border border-neutral-700 bg-[#0e1122] text-cyan-300 focus:border-cyan-400"
               >
                 {CATEGORIES.filter((c) => c.id !== 'ALL').map((c) => (
                   <option key={c.id} value={c.id}>
@@ -223,26 +223,26 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 DURATION [MM:SS]
               </label>
               <input
                 type="text"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                placeholder="04:20"
-                className="w-full p-2 border border-neutral-300 bg-neutral-50 focus:border-black"
+                placeholder="06:20"
+                className="w-full p-2 border border-neutral-700 bg-[#0e1122] text-white focus:border-cyan-400"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+              <label className="block text-[11px] font-bold text-neutral-300 mb-1">
                 ENCODED_RES
               </label>
               <select
                 value={resolution}
                 onChange={(e) => setResolution(e.target.value as any)}
-                className="w-full p-2 border border-neutral-300 bg-neutral-50 focus:border-black"
+                className="w-full p-2 border border-neutral-700 bg-[#0e1122] text-pink-400 focus:border-pink-500"
               >
                 <option value="4K">4K [AV1 HDR]</option>
                 <option value="1080P">1080P [60FPS]</option>
@@ -253,47 +253,47 @@ export const UploadVideoModal: React.FC<UploadVideoModalProps> = ({
 
           {/* Channel Name */}
           <div>
-            <label className="block text-[11px] font-bold text-neutral-800 mb-1">
-              CREATOR_CHANNEL
+            <label className="block text-[11px] font-bold text-neutral-300 mb-1">
+              CREATOR_RIDER_HANDLE
             </label>
             <input
               type="text"
               value={channelName}
               onChange={(e) => setChannelName(e.target.value)}
-              placeholder="Your handle or channel name"
-              className="w-full p-2 border border-neutral-300 bg-neutral-50 focus:border-black"
+              placeholder="Your handle or bike club"
+              className="w-full p-2 border border-neutral-700 bg-[#0e1122] text-white focus:border-cyan-400"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-[11px] font-bold text-neutral-800 mb-1">
+            <label className="block text-[11px] font-bold text-neutral-300 mb-1">
               DESCRIPTION // 概要
             </label>
             <textarea
               rows={2}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Add technical or route details..."
-              className="w-full p-2 border border-neutral-300 bg-neutral-50 focus:border-black resize-none"
+              placeholder="Add exhaust setup, engine mods, or highway route details..."
+              className="w-full p-2 border border-neutral-700 bg-[#0e1122] text-white focus:border-cyan-400 resize-none"
             />
           </div>
 
           {/* Submit footer */}
-          <div className="pt-2 border-t border-neutral-200 flex justify-end gap-2">
+          <div className="pt-2 border-t border-neutral-800 flex justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-neutral-300 hover:bg-neutral-100"
+              className="px-4 py-2 border border-neutral-700 hover:bg-neutral-800 text-neutral-300 cursor-pointer"
             >
               CANCEL
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-black text-white hover:bg-neutral-800 font-bold flex items-center gap-1.5 shadow-sm"
+              className="px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-black flex items-center gap-1.5 shadow-[0_0_12px_rgba(5,217,232,0.5)] cursor-pointer"
             >
               <Check className="w-3.5 h-3.5" />
-              <span>PUBLISH_NODE // 公開</span>
+              <span>PUBLISH_STREAM // 公開</span>
             </button>
           </div>
         </form>

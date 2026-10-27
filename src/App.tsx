@@ -142,8 +142,8 @@ export default function App() {
   }, [videos, savedVideoIds]);
 
   return (
-    <div className="relative min-h-screen bg-neutral-50/70 text-neutral-900 font-mono flex flex-col selection:bg-black selection:text-white">
-      {/* 1. FAINT GREY AMBIENT LAYER: Cute Japanese girl on motorcycle in tunnel & city */}
+    <div className="relative min-h-screen bg-[#06070a] text-neutral-100 font-mono flex flex-col selection:bg-pink-500 selection:text-white">
+      {/* 1. FAST MOVING CITY LIGHTS & MOTORCYCLE GIRL AMBIENT LAYER */}
       <AmbientMotorcycleBackground
         settings={ambientSettings}
         onUpdateSettings={handleUpdateAmbient}
@@ -198,52 +198,52 @@ export default function App() {
           </main>
         )}
 
-        {/* Minimal Terminal Footer with BIG UNCIRCLED LOGO */}
-        <footer className="border-t border-neutral-200 bg-white/95 backdrop-blur-xs py-8 px-4 text-xs font-mono text-neutral-600 mt-auto">
+        {/* Minimal Dark Cyberpunk Terminal Footer */}
+        <footer className="border-t border-neutral-800/80 bg-[#070912]/95 backdrop-blur-md py-8 px-4 text-xs font-mono text-neutral-400 mt-auto">
           <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div
               onClick={handleNavigateHome}
               className="flex items-center gap-4 cursor-pointer select-none"
             >
               <img
-                src="/assets/aistudio/Circular_manga_emblem_on_transparent_background_9f6502e1.png"
-                alt="Kurogane Logo"
-                className="h-16 w-auto object-contain"
+                src="/assets/aistudio/Manga_racer_with_a_raised_visor_da073607.png"
+                alt="Kurogane Racer Logo"
+                className="h-16 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,42,109,0.4)]"
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base text-neutral-950">
+                  <span className="font-extrabold text-base text-white">
                     KUROGANE // 黒鉄 TUBE SYSTEM
                   </span>
-                  <span className="text-[10px] bg-neutral-200 text-neutral-800 px-1 font-bold">
-                    [TYO]
+                  <span className="text-[10px] bg-pink-950/80 border border-pink-700 text-pink-300 px-1 font-bold">
+                    [TOKYO_C1]
                   </span>
                 </div>
-                <div className="text-[11px] text-neutral-500">
-                  TERMINAL-CLASS VIDEO NETWORK // YAMATE TUNNEL NODE
+                <div className="text-[11px] text-neutral-400">
+                  JAPANESE MOTORCYCLE MATRIX // YAMATE DEEP TUNNEL NODE
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-neutral-600">
-              <span>ENCODING: AV1-HDR</span>
+            <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-neutral-400">
+              <span className="text-cyan-400">ENCODING: AV1-HDR</span>
               <span>•</span>
-              <span>5-COL MATRIX</span>
+              <span className="text-pink-400">5-VIDEOS / LINE</span>
               <span>•</span>
               <button
                 onClick={() =>
                   handleUpdateAmbient({
-                    opacity: ambientSettings.opacity === 0 ? 8 : 0,
+                    soundEnabled: !ambientSettings.soundEnabled,
                   })
                 }
-                className="hover:text-black underline cursor-pointer"
+                className="hover:text-cyan-400 text-neutral-300 underline cursor-pointer"
               >
-                AMBIENT_RIDER: {ambientSettings.opacity > 0 ? 'ACTIVE' : 'MUTED'}
+                EXHAUST_ASMR: {ambientSettings.soundEnabled ? 'ACTIVE' : 'MUTED'}
               </button>
               <span>•</span>
               <button
                 onClick={() => setIsCliOpen(true)}
-                className="hover:text-black underline cursor-pointer"
+                className="hover:text-pink-400 text-neutral-300 underline cursor-pointer"
               >
                 CLI: PRESS [/]
               </button>
