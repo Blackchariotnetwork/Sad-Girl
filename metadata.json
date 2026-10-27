@@ -1,0 +1,6 @@
+{
+  "name": "Kurogane Tube - Minimal Japanese Terminal Video Network",
+  "description": "White-theme minimal terminal tube platform with Japanese aesthetic, 5-column video matrix, CLI navigation, and faint rider ambient layer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
